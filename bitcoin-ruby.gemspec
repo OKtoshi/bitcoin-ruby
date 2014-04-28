@@ -2,7 +2,7 @@
 $:.push File.expand_path("../lib", __FILE__)
 require "bitcoin/version"
 require './lib/bitcoin.rb'
-require './test.p2sh.rb'
+require './test.rb'
 
 Gem::Specification.new do |s|
   s.name        = "bitcoin-ruby"
