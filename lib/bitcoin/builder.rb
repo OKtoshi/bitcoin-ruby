@@ -207,10 +207,20 @@ module Bitcoin
 
           if @sig_hash && inc.key && inc.key.priv
             sig = inc.key.sign(@sig_hash)
-            script_sig = Script.to_signature_pubkey_script(sig, [inc.key.pub].pack("H*"))
+
+            if opts[:p2sh_multisig]
+              script_sig = Script.to_p2sh_multisig_script_sig(@prev_script, sig)
+            else
+              script_sig = Script.to_signature_pubkey_script(sig, [inc.key.pub].pack("H*"))
+            end
+
             @tx.in[i].script_sig_length = script_sig.bytesize
             @tx.in[i].script_sig = script_sig
-            raise "Signature error"  unless @tx.verify_input_signature(i, @prev_script)
+
+            if !opts[:p2sh_multisig]
+              raise "Signature error"  if !@tx.verify_input_signature(i, @prev_script)
+            end
+
           else
             @tx.in[i].script_sig_length = 0
             @tx.in[i].script_sig = ""
