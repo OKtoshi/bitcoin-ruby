@@ -653,12 +653,20 @@ class Bitcoin::Script
   end
 
   def self.to_p2sh_multisig_script_sig(connected_script, *sigs)
-    sig = sigs[0] + "\x01"
-    sig_len = [sig.bytesize].pack("C*")
+    all_sigs = ""
+
+    sigs[0].each do |sig|
+      full_sig = sig + "\x01"
+      sig_len = [full_sig.bytesize].pack("C*")
+
+      all_sigs += (sig_len + full_sig)
+    end
+
     push = [OP_PUSHDATA1].pack("C*")
     script_len = [connected_script.bytesize].pack("C*")
+    full_script = "\x00" + all_sigs + push + script_len + connected_script
 
-    return "\x00" + sig_len + sig + push + script_len + connected_script
+    return full_script
   end
 
   def get_signatures_required
