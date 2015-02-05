@@ -701,6 +701,30 @@ module Bitcoin
 
       }
     },
+    
+    :auroracoin => {
+      :project => :auroracoin,
+      :magic_head => "\xfd\xa4\xdc\x6c",
+      :address_version => "23",
+      :p2sh_version => "05",
+      :privkey_version => "80",
+      :default_port => 12340,
+      :protocol_version => 1030000,
+      :max_money => 21_000_000 * COIN,
+      :min_tx_fee => 50_000,
+      :min_relay_tx_fee => 10_000,
+      :dns_seeds => [ "seed.aur.co.vu" ],
+      :genesis_hash => "f54c0f8ed0b8ba85f99525d37e7cc9a5107bd752a54d8778d6cfb4f36cb51131",
+      :proof_of_work_limit => 0,
+      :alert_pubkeys => [],
+      :known_nodes => [],
+      :checkpoints => {
+        2 => "2e739d971f02265b83895c04854fcb4deb48806126097b5feaf92ffd4d2341d6",
+        123 => "76b2378c0cd904584d9c226d9ef7a4a91a4ed701f2da36e4bd486d0c7a27b1fd",
+        5810 => "71517f8219449fd56ade24c888bbfd7d228c898d2aac8a078fd655be4182e813",
+        6350 => "76afd9f23e61b513e0c5224754943a1b1a6ddbed73586416363095808ac12eb1",
+      }
+    },
   }
 
 end
