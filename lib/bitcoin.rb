@@ -705,7 +705,7 @@ module Bitcoin
     :auroracoin => {
       :project => :auroracoin,
       :magic_head => "\xfd\xa4\xdc\x6c",
-      :address_version => "23",
+      :address_version => "17",
       :p2sh_version => "05",
       :privkey_version => "80",
       :default_port => 12340,
