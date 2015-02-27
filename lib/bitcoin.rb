@@ -707,7 +707,7 @@ module Bitcoin
       :magic_head => "\xfd\xa4\xdc\x6c",
       :address_version => "17",
       :p2sh_version => "05",
-      :privkey_version => "80",
+      :privkey_version => "97",
       :default_port => 12340,
       :protocol_version => 1030000,
       :max_money => 21_000_000 * COIN,
